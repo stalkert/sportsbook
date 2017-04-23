@@ -1,0 +1,60 @@
+
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
+
+
+html { }
+body {
+    padding-top:40px;
+}
+.wrapper-app{
+  display: table-row;
+}
+#accordeon{
+    display:table-cell;
+    width:25%;
+    a{
+          color: #D1D3D2;
+          text-decoration: none;
+          font-size: 1.5em;
+        }
+        .country-style{
+          padding-left: 40px;
+          background-color:#333;
+
+        }
+        .league-style{
+          padding-left: 80px;
+           background-color:#444;
+        }
+        .game-style{
+            padding-left:20px;
+        }
+}
+.matches-table{
+    display:table-cell;
+    .matches{
+      border: 1px solid gray;
+      tr:nth-child(odd) {
+        background-color: lightgray;
+      }
+      td {
+        border: 1px solid gray;
+        text-align: center;
+        padding:5px;
+      }
+      #default-title{
+        background-color:white;
+      }
+
+
+      .table-header{
+        text-align: center;
+        padding:5px;
+        border: 1px solid gray;
+      }
+      .data{
+        min-width: 90px;
+      }
+    }
+}

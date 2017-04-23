@@ -1,0 +1,52 @@
+<div class="row wrapper-app">
+        <div class="navbar-inverse" id="accordeon">
+            <div ng-repeat="game in tree | orderBy:'-priority' track by $index" ng-init="indexLevelOne=$index">
+                <div id="heading{{$index}}" class="game-style">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}"
+                       aria-expanded="false" aria-controls="collapse{{$index}}">
+                        {{game.name}}
+                    </a>
+                </div>
+                <div id="collapse{{$index}}"  class="collapse" aria-labelledby="heading{{$index}}">
+                        <div ng-repeat="country in game.countries | orderBy:'name' track by $index">
+                            <div role="button" id="heading{{indexLevelOne}}-{{$index}}" class="country-style" >
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="collapse{{indexLevelOne}}-{{$index}}"
+                                   href="#collapse{{indexLevelOne}}-{{$index}}" aria-expanded="false" aria-controls="collapse{{indexLevelOne}}-{{$index}}">
+                                    {{country.name}}
+                                </a>
+                            </div>
+                            <div id="collapse{{indexLevelOne}}-{{$index}}" class="collapse " role="tabpanel"
+                                 aria-labelledby="heading{{indexLevelOne}}-{{$index}}">
+                                <div ng-repeat="league in country.leagues | orderBy:'name' track by $index" >
+                                    <div class="league-style">
+                                        <a role="button" ui-sref=".matches({id:{{league.id}}})">{{league.name}}</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    <div class="matches-table">
+        <div class="row" >
+            <div class="col-md-12">
+                <table class="matches">
+                    <thead>
+                    <tr>
+                        <th class="table-header">Date</th>
+                        <th class="table-header">Pair</th>
+                        <th class="table-header" ng-repeat="item in layout[3].odds | orderBy: 'priority' track by item.priority">{{item.name}}</th>
+                        <th class="table-header"  ng-repeat="item in layout[1].odds | orderBy: 'priority' track by item.priority">{{item.name}}</th>
+                        <th class="table-header"  ng-repeat="item in layout[2].odds | orderBy: 'priority' track by item.priority">{{item.name}}</th>
+                        <th class="table-header" ng-repeat="item in layout[0].odds | orderBy: 'priority' track by item.priority">{{item.name}}</th>
+                        <th class="table-header" ng-repeat="item in layout[4].odds | orderBy: '-priority' track by item.priority">{{item.name}}</th>
+                    </tr>
+                    </thead>
+                    <tbody ui-view>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

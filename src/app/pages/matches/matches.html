@@ -1,0 +1,10 @@
+<tr ng-repeat="match in matches | orderBy:'order' track by $index">
+
+    <td class="data">{{match.sd}}</td>
+    <td>{{match.h}} - {{match.a}}</td>
+    <td ng-repeat="odd in match.odds['3way'] | orderBy:'order' track by odd.order">{{odd.value}}</td>
+    <td ng-repeat="odd in match.odds['doubleChance'] | orderBy:'order' track by odd.order">{{odd.value}}</td>
+    <td ng-repeat="odd in match.odds['drawNoBet'] | orderBy:'order' track by odd.order">{{odd.value}}</td>
+    <td ng-repeat="odd in match.odds['bothToScore'] | orderBy:'order' track by odd.order">{{odd.value}}</td>
+    <td ng-repeat="odd in match.odds['totalGoals'] | orderBy:'order' track by odd.order">{{odd.value}}</td>
+</tr>
